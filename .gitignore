@@ -1,0 +1,15 @@
+# Ignore everything
+*
+
+# Track structure and docs
+!*/
+!*/compose.yml
+!*/compose.yaml
+!*/*.md
+!.gitignore
+!README.md
+!ROADMAP.md
+
+# Never track secrets
+**/.env
+**/*.env
