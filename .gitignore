@@ -15,6 +15,9 @@
 !/*/docker-compose.yml
 !/*/compose.yml
 !/*/compose.yaml
+!/*/*/compose.yml
+!/*/*/compose.yaml
+!/*/*/docker-compose.yml
 
 # Track mds
 !README.md
