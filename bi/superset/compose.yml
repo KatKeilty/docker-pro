@@ -1,0 +1,52 @@
+services:
+  superset:
+    image: apache/superset:latest
+    container_name: superset
+    restart: unless-stopped
+    environment:
+      - SUPERSET_SECRET_KEY=${SUPERSET_SECRET_KEY}
+      - ADMIN_USERNAME=${ADMIN_USERNAME:-admin}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin}
+      - ADMIN_EMAIL=${ADMIN_EMAIL:-admin@localhost}
+    ports:
+      - "8088:8088"
+    volumes:
+      - superset_home:/app/superset_home
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512m
+
+  superset-init:
+    image: apache/superset:latest
+    container_name: superset-init
+    depends_on:
+      - superset
+    environment:
+      - SUPERSET_SECRET_KEY=${SUPERSET_SECRET_KEY}
+      - ADMIN_USERNAME=${ADMIN_USERNAME:-admin}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin}
+      - ADMIN_EMAIL=${ADMIN_EMAIL:-admin@localhost}
+    volumes:
+      - superset_home:/app/superset_home
+    command: >
+      bash -c "
+        superset db upgrade &&
+        superset fab create-admin
+          --username $$ADMIN_USERNAME
+          --firstname Admin
+          --lastname User
+          --email $$ADMIN_EMAIL
+          --password $$ADMIN_PASSWORD &&
+        superset init
+      "
+    restart: on-failure
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512m
+
+volumes:
+  superset_home:

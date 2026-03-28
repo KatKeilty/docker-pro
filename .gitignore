@@ -1,28 +1,5 @@
-# Ignore everything
-*
-
-# Un-ignore directories
-!/bi/metabase/
-!/bi/superset/compose.yml
-!/design/penpot/
-!/devops/gitea/
-!/files/nextcloud/
-!/pm/vikunja/
-!/security/authentik/
-!/security/vaultwarden/
-
-# Un-ignore compose files within those dirs
-!/*/docker-compose.yml
-!/*/compose.yml
-!/*/compose.yaml
-!/*/*/compose.yml
-!/*/*/compose.yaml
-!/*/*/docker-compose.yml
-
-# Track mds
-!README.md
-!ROADMAP.md
-
-# Never track secrets
+# Secrets only
+.env
+*.env
 **/.env
 **/*.env
