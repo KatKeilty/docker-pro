@@ -3,7 +3,7 @@
 
 # Un-ignore directories
 !/bi/metabase/
-!/bi/superset/
+!/bi/superset/compose.yml
 !/design/penpot/
 !/devops/gitea/
 !/files/nextcloud/
