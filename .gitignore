@@ -1,12 +1,22 @@
 # Ignore everything
 *
 
-# Track structure and docs
-!*/
-!*/compose.yml
-!*/compose.yaml
-!*/*.md
-!.gitignore
+# Un-ignore directories
+!/bi/metabase
+!/bi/superset
+!/design/penpot
+!/devops/gitea
+!/files/nextcloud
+!/pm/vikunja
+!/security/authentik
+!/security/vaultwarden
+
+# Un-ignore compose files within those dirs
+!/*/docker-compose.yml
+!/*/compose.yml
+!/*/compose.yaml
+
+# Track mds
 !README.md
 !ROADMAP.md
 
