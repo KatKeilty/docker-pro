@@ -1,0 +1,18 @@
+services:
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DOMAIN: https://${VAULTWARDEN_HOSTNAME}
+      ADMIN_TOKEN: ${VAULTWARDEN_ADMIN_TOKEN}
+      SIGNUPS_ALLOWED: "false"
+    volumes:
+      - ${CONFIG_PATH}/vaultwarden/data:/data
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    external: true
