@@ -2,14 +2,14 @@
 *
 
 # Un-ignore directories
-!/bi/metabase
-!/bi/superset
-!/design/penpot
-!/devops/gitea
-!/files/nextcloud
-!/pm/vikunja
-!/security/authentik
-!/security/vaultwarden
+!/bi/metabase/
+!/bi/superset/
+!/design/penpot/
+!/devops/gitea/
+!/files/nextcloud/
+!/pm/vikunja/
+!/security/authentik/
+!/security/vaultwarden/
 
 # Un-ignore compose files within those dirs
 !/*/docker-compose.yml
